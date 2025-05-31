@@ -58,6 +58,7 @@ def main():
         print("2. Listar Películas")
         print("3. Eliminar catálogo de películas")
         print("4. Cambiar de catálogo")
+        print("5. Listar catálogos")
         print("0. Salir")
         opcion = input("✨ Seleccione una opción: ")
 
@@ -106,6 +107,15 @@ def main():
             # Verificamos si el archivo ya existe
             control(nombre_catalogo) # traigo la funcion de control de errores del archivo_2
             catalogo = CatalogoPelicula(nombre_catalogo)
+            
+        elif opcion == '5':
+            print("✨ Listado de catálogos: ")
+            for archivo in os.listdir():
+                if archivo.endswith('.txt'):
+                    print(archivo[:-4])
+                    catalogo = CatalogoPelicula(archivo[:-4])  
+                    print("✨ Listado de películas: ")
+                    catalogo.listar()
 
         elif opcion == '0':
             print("Se ha realizado correctamente la edicion de los catálogos. Muchas gracias! 😊")
